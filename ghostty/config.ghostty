@@ -34,6 +34,8 @@ keybind = super+g=text:\x00g
 keybind = super+shift+g=text:\x00G
 # Command+Shift+P toggles Bluetooth off / the Q45 connection via tmux.
 keybind = super+shift+p=text:\x00B
+# Command+Shift+S opens the fuzzy Pi session picker in tmux.
+keybind = super+shift+s=text:\x00P
 keybind = super+l=text:\x00l
 keybind = super+s=text:\x00S
 keybind = super+a=text:\x00A

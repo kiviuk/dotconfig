@@ -50,6 +50,8 @@ bindings = [
   { key = "G", mods = "Command|Shift", chars = "\u0000G" },
   # Send Ctrl-Space then B to toggle Bluetooth off / Q45 connection with Command+Shift+P.
   { key = "P", mods = "Command|Shift", chars = "\u0000B" },
+  # Send Ctrl-Space then P to open the fuzzy Pi session picker with Command+Shift+S.
+  { key = "S", mods = "Command|Shift", chars = "\u0000P" },
   # Send Ctrl-Space then l to toggle to the last tmux window with Command+L.
   { key = "L", mods = "Command", chars = "\u0000l" },
   # Send Ctrl-Space then S to open the tmux snippets picker with Command+S.
