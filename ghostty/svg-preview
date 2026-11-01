@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# Preview an SVG in Ghostty using macOS Quick Look and Kitty Graphics.
+# Square-pad its viewBox to avoid Quick Look's square thumbnail cropping portrait/landscape files.
+
+set -euo pipefail
+
+if [[ $# -ne 1 || ! -f "$1" ]]; then
+  printf 'Usage: %s path/to/file.svg\n' "$0" >&2
+  exit 2
+fi
+
+SVG_INPUT="$1"
+TEMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/ghostty-svg.XXXXXX")"
+trap 'rm -rf "$TEMP_DIR"' EXIT
+PADDED_SVG="$TEMP_DIR/$(basename "$SVG_INPUT" .svg)-square.svg"
+
+python3 - "$SVG_INPUT" "$PADDED_SVG" <<'PY'
+import math
+import re
+import sys
+import xml.etree.ElementTree as ET
+
+source, destination = sys.argv[1:]
+ET.register_namespace("", "http://www.w3.org/2000/svg")
+ET.register_namespace("xhtml", "http://www.w3.org/1999/xhtml")
+
+
+def length_in_px(value):
+    match = re.fullmatch(r"\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(px|in|cm|mm|pt|pc)?\s*", value)
+    if not match:
+        raise ValueError(f"cannot resolve SVG length: {value!r}")
+    number = float(match.group(1))
+    unit = match.group(2) or "px"
+    scale = {"px": 1, "in": 96, "cm": 96 / 2.54, "mm": 96 / 25.4, "pt": 96 / 72, "pc": 16}[unit]
+    return number * scale
+
+
+def fmt(number):
+    return f"{number:.6f}".rstrip("0").rstrip(".") or "0"
+
+
+try:
+    tree = ET.parse(source)
+    root = tree.getroot()
+    box = root.get("viewBox") or root.get("viewbox")
+    if box:
+        values = [float(part) for part in re.split(r"[\s,]+", box.strip())]
+        if len(values) != 4:
+            raise ValueError(f"invalid viewBox: {box!r}")
+        x, y, width, height = values
+    else:
+        x = y = 0.0
+        width = length_in_px(root.get("width", "300"))
+        height = length_in_px(root.get("height", "150"))
+
+    if width <= 0 or height <= 0:
+        raise ValueError("SVG viewport dimensions must be positive")
+
+    side = max(width, height)
+    padded_x = x - (side - width) / 2
+    padded_y = y - (side - height) / 2
+    root.set("viewBox", f"{fmt(padded_x)} {fmt(padded_y)} {fmt(side)} {fmt(side)}")
+    root.set("width", f"{fmt(side)}px")
+    root.set("height", f"{fmt(side)}px")
+    root.set("preserveAspectRatio", root.get("preserveAspectRatio", "xMidYMid meet"))
+
+    style = root.get("style")
+    if style and re.search(r"max-width\s*:", style, re.IGNORECASE):
+        root.set("style", re.sub(r"(max-width\s*:\s*)[^;]+", rf"\g<1>{fmt(side)}px", style, count=1, flags=re.IGNORECASE))
+
+    # Expand a background rect when it exactly matches the original viewport.
+    for element in root.iter():
+        if element.tag.rsplit("}", 1)[-1] != "rect":
+            continue
+        try:
+            rx = length_in_px(element.get("x", "0"))
+            ry = length_in_px(element.get("y", "0"))
+            rw = length_in_px(element.get("width", "0"))
+            rh = length_in_px(element.get("height", "0"))
+        except ValueError:
+            continue
+        if all(math.isclose(a, b, abs_tol=0.01) for a, b in ((rx, x), (ry, y), (rw, width), (rh, height))):
+            element.set("x", fmt(padded_x))
+            element.set("y", fmt(padded_y))
+            element.set("width", fmt(side))
+            element.set("height", fmt(side))
+            break
+
+    tree.write(destination, encoding="utf-8", xml_declaration=True)
+except Exception as error:
+    print(f"SVG preview: {error}", file=sys.stderr)
+    sys.exit(1)
+PY
+
+qlmanage -t -s 1800 -o "$TEMP_DIR" "$PADDED_SVG" >/dev/null
+PNG="$TEMP_DIR/$(basename "$PADDED_SVG").png"
+kitty +kitten icat --fit=both "$PNG"

@@ -34,7 +34,36 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 [keyboard]
 bindings = [
   { key = "Return", mods = "Command", chars = "\u000a" },
+  # Send Ctrl-Space to tmux as the prefix key.
   { key = "Space", mods = "Control", chars = "\u0000" },
+  # Send Ctrl-Space then [ to tmux to enter vi copy mode with Command+[.
+  { key = "LBracket", mods = "Command", chars = "\u0000[" },
+  # Send Ctrl-Space then , to rename the tmux window with Command+R.
+  { key = "R", mods = "Command", chars = "\u0000," },
+  # Send Ctrl-Space then c to create a tmux window with Command+N.
+  { key = "N", mods = "Command", chars = "\u0000c" },
+  # Send Ctrl-Space then e to open tmux's fuzzy file picker with Command+E.
+  { key = "E", mods = "Command", chars = "\u0000e" },
+  # Send Ctrl-Space then g to open tmux's fuzzy dictionary picker with Command+G.
+  { key = "G", mods = "Command", chars = "\u0000g" },
+  # Send Ctrl-Space then G to open the source-line picker with Command+Shift+G.
+  { key = "G", mods = "Command|Shift", chars = "\u0000G" },
+  # Send Ctrl-Space then B to toggle Bluetooth off / Q45 connection with Command+Shift+P.
+  { key = "P", mods = "Command|Shift", chars = "\u0000B" },
+  # Send Ctrl-Space then l to toggle to the last tmux window with Command+L.
+  { key = "L", mods = "Command", chars = "\u0000l" },
+  # Send Ctrl-Space then S to open the tmux snippets picker with Command+S.
+  { key = "S", mods = "Command", chars = "\u0000S" },
+  # Send Ctrl-Space then A to open the tmux snippets editor with Command+A.
+  { key = "A", mods = "Command", chars = "\u0000A" },
+  # Send Ctrl-Space then h to split the tmux pane side by side with Command+Shift+H.
+  { key = "H", mods = "Command|Shift", chars = "\u0000h" },
+  # Send Ctrl-Space then < to move the tmux window left with Command+,.
+  { key = "Comma", mods = "Command", chars = "\u0000<" },
+  # Send Ctrl-Space then > to move the tmux window right with Command+..
+  { key = "Period", mods = "Command", chars = "\u0000>" },
+  # Command+X sends the tmux pane-zoom key (Shift+§ / ±).
+  { key = "X", mods = "Command", chars = "±" },
   # Font size control (bypasses tmux)
   { key = "Equals", mods = "Control", mode = "~Vi|~Search", action = "IncreaseFontSize" },
   { key = "Minus", mods = "Control", mode = "~Vi|~Search", action = "DecreaseFontSize" },

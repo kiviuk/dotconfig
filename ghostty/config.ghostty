@@ -1,0 +1,57 @@
+# Ghostty configuration adapted from ~/.config/alacritty/alacritty.toml
+
+# Match Alacritty's TERM setting.
+env = TERM=xterm-256color
+
+# Window appearance
+window-padding-x = 10
+window-padding-y = 0
+background-opacity = 0.8
+background-opacity-cells = true
+background-blur = true
+macos-option-as-alt = true
+
+# Typography
+font-family = MesloLGS Nerd Font Mono
+font-size = 17
+font-thicken = true
+
+# Custom theme stored in ~/.config/ghostty/themes/coolnight.
+theme = coolnight
+
+# Match Alacritty's semantic selection boundaries.
+selection-word-chars = ",│`|:\"' ()[]{}<>\t"
+
+# Alacritty-compatible tmux and font-size shortcuts.
+keybind = super+enter=text:\n
+keybind = ctrl+space=text:\x00
+keybind = super+[=text:\x00[
+keybind = super+r=text:\x00,
+keybind = super+n=text:\x00c
+keybind = super+e=text:\x00e
+keybind = super+g=text:\x00g
+# Command+Shift+G opens the source-line picker in the current tmux pane.
+keybind = super+shift+g=text:\x00G
+# Command+Shift+P toggles Bluetooth off / the Q45 connection via tmux.
+keybind = super+shift+p=text:\x00B
+keybind = super+l=text:\x00l
+keybind = super+s=text:\x00S
+keybind = super+a=text:\x00A
+keybind = super+shift+h=text:\x00h
+keybind = super+,=text:\x00<
+keybind = super+period=text:\x00>
+
+# Command+X sends the tmux pane-zoom key (Shift+§ / ±).
+keybind = super+x=text:±
+
+# Command+Left/Right select the previous/next tmux window.
+keybind = super+arrow_left=text:\x00p
+keybind = super+arrow_right=text:\x00n
+
+# Pass Option+Left/Right through to tmux's M-Left/M-Right bindings.
+keybind = alt+arrow_left=unbind
+keybind = alt+arrow_right=unbind
+
+keybind = ctrl+==increase_font_size:0.03
+keybind = ctrl+minus=decrease_font_size:0.03
+keybind = ctrl+0=reset_font_size

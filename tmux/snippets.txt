@@ -1,9 +1,28 @@
-response is too dense.... breath.. full sentences.. respond calmly. dont rush: try again
-create branch and work-item
-I have commmited changes and pushed to remote. Now YOU create a pull request for me.
-explain - brevity is king.. use simple plain english. the text made the effort to write in clear sentences.. i expect the same curtesy from your response
-brevity is king, try again i have no idea what you just said!
-check new ycombinator frontpage: give me the reader's digest for today 
+den: response is too dense.... breath.. full sentences.. respond calmly. dont rush: try again
+
+crea: create branch and work-item, if the branch already exists, just create a work-item. if the work-item already exists, just create a branch. if both exist (branch has work-item Number and work-item exists), do nothing. If the branch is mssing the work-item in the name, rename the branch to include the work-item. 
+
+tests: use parse_printed_dataframe, printed dataframes using print_dataframe and chipsa to assert. example: gigalix/imp__tubeusage/tests/importers/test_tubeusage_importer_scan_data.py:191
+
+pull: I have commmited changes and pushed to remote. Now YOU make a pull request (PR) for me.
+
+what changed: explain in simple terms the changes you made in tabular form: ItemNumber │ filename | What the code did before│ What the code does now │ Reason for the change |pros │ cons. Avoid using "it", "the code", etc: Be very explicit, reference the specific function, method, or variable by name, filename with line Number. 
+
+answer: explain in simple terms: Present the answer in tabular from: ItemNumber | filename │ What the code did before│ What the code does now │ What we need to fix. Avoid using "it", "the code", etc: Be very explicit, reference the specific function, method, or variable by name, filename with line Number.
+
+ki: explain - brevity is king.. use simple plain english. the text made the effort to write in clear sentences.. i expect the same curtesy from your response
+ki: brevity is king, try again i have no idea what you just said!
+
+tab: I expect a tabular answer with Row Number | pros , cons, a Reason column explaining why  pro or con, and another Action column with actionable next steps if necessary. Dont' give me a bedtime story.
+
+yes: I expect a tabular answer with Row rumber | yes / no, a Reason column explaining why  yes or no, and another Action column with actionable next steps if necessary. Dont' give me a bedtime story.
+
+tab: Present the answer in tabular from: ItemNumber │ Finding │ What the code actually does│ actionable proposed changes │ . Avoid using "it", "the code", etc: Be very explicit, reference the specific function, method, or variable by name, filename with line Number. 
+
+yc: check new ycombinator frontpage: give me the reader's digest for today - 25 bullets max, numbered, 1 sentence each, no fluff, no filler, no commentary, no opinion, just the facts. 
+
+pi extension: /Users/mobe/.pi/agent/npm/node_modules
+
 /Users/mobe/Projects/xmart
 /Users/mobe/Projects/spark_delta
 /Users/mobe/Projects/FieldData-Cloudification
@@ -17,8 +36,25 @@ check new ycombinator frontpage: give me the reader's digest for today
 /Users/mobe/.config/nvim
 /Users/mobe/.tmux.conf
 /Users/mobe/.config/alacritty
+/Users/mobe/.config/ghostty
 /Users/mobe/.zalias
 /Users/mobe/.zshrc
 /Users/mobe/Library/Application Support/Code/User
+/Users/mobe/Projects/empty
+/Users/mobe/Projects/whisper.cpp
+/Users/mobe/.github-copilot-cli/cache/models/Microsoft/nemotron-3.5-asr-streaming-0.6b-generic-cpu-3/v3/
+/Users/mobe/.github-copilot-cli/cache/models/foundry.modelinfo.json
+
 https://asciidiagrams.github.io/
+
+
+
+
+-----changes
+
+-  we dont do local imports   from tubeusage.t02.tubeusage_02_streaming_incoming_to_tubeusage_all import (
+        _add_item_collection_time_datetime,
+    )
+
+- we dont fo inline returns: BAD return df.filter(...)
 
