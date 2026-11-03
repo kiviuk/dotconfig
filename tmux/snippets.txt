@@ -44,6 +44,9 @@ pi extension: /Users/mobe/.pi/agent/npm/node_modules
 /Users/mobe/Projects/whisper.cpp
 /Users/mobe/.github-copilot-cli/cache/models/Microsoft/nemotron-3.5-asr-streaming-0.6b-generic-cpu-3/v3/
 /Users/mobe/.github-copilot-cli/cache/models/foundry.modelinfo.json
+/Users/mobe/.ideavimrc
+/Users/mobe/.aerospace.toml
+
 
 https://asciidiagrams.github.io/
 
