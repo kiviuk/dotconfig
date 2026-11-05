@@ -1,0 +1,5 @@
+{
+  "trustedcasks": [
+    "anomalyco/tap/hex"
+  ]
+}

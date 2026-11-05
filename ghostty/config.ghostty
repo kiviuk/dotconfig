@@ -27,7 +27,8 @@ selection-word-chars = ",│`|:\"' ()[]{}<>\t"
 keybind = super+enter=text:\n
 keybind = ctrl+space=text:\x00
 keybind = super+[=text:\x00[
-keybind = super+r=text:\x00,
+# Pass Command+R through for Neovim's force-reload mapping.
+keybind = super+r=unbind
 keybind = super+n=text:\x00c
 keybind = super+e=text:\x00e
 keybind = super+g=text:\x00g
@@ -54,6 +55,9 @@ keybind = super+arrow_right=text:\x00n
 # Pass Option+Left/Right through to tmux's M-Left/M-Right bindings.
 keybind = alt+arrow_left=unbind
 keybind = alt+arrow_right=unbind
+
+# Keep Command+T for Ghostty tabs; pass Command+Shift+T to terminal apps.
+keybind = super+shift+t=unbind
 
 keybind = ctrl+==increase_font_size:0.03
 keybind = ctrl+minus=decrease_font_size:0.03

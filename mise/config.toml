@@ -1,3 +1,4 @@
 [tools]
+node = "26.13.0"
 "pypi:pylatexenc" = "latest"
 uv = "0.12.21"
