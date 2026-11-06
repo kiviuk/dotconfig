@@ -13,6 +13,6 @@ if ! git -C "$START_DIR" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   exit 0
 fi
 
-"$TMUX_BIN" display-popup -E -B -w 100% -h 80% -t "$TARGET_PANE" -d "$START_DIR" \
-  -s "bg=#07191e,fg=#b8c5c8" \
+"$TMUX_BIN" display-popup -E -B -w 80% -h 80% -t "$TARGET_PANE" -d "$START_DIR" \
+  -s "bg=#011423,fg=#CBE0F0" \
   "$LAZYGIT_BIN"

@@ -124,7 +124,7 @@ if [[ "${2:-}" == "--popup" ]]; then
         --border=rounded --delimiter=$'\t' --with-nth='1,2,3,4' \
         --preview='printf "Started: %s\\nProject: %s\\nSession ID: %s\\n\\nLast prompt:\\n%s\\n\\nSession file:\\n%s\\nWorking directory:\\n%s\\n" {1} {2} {3} {4} {5} {6}' \
         --preview-window='right:55%:wrap' \
-        --color='bg:#07191e fg:#b8c5c8 fg+:#dce3e3 bg+:#183139 hl:#d5a53d hl+:#f1bd58 info:#82979b prompt:#ed8438 pointer:#ed8438 marker:#e4b648 spinner:#82b5b9 header:#e58a3a border:#205660 preview-border:#205660 preview-bg:#07191e label:#e58a3a gutter:#07191e'
+        --color='bg:#011423 fg:#CBE0F0 fg+:#EAF6FF bg+:#15334B hl:#0FC5ED hl+:#24EAF7 info:#7FAAC2 prompt:#0FC5ED pointer:#24EAF7 marker:#A277FF spinner:#7FAAC2 header:#A277FF border:#214969 preview-border:#214969 preview-bg:#011423 label:#0FC5ED gutter:#011423'
   )"; then
     exit 0
   fi
@@ -142,5 +142,5 @@ fi
 
 START_DIR="$(tmux display-message -p -t "$TARGET_PANE" '#{pane_current_path}')"
 tmux display-popup -E -w 90% -h 90% -T ' Pi Sessions (fzf) ' \
-  -t "$TARGET_PANE" -d "$START_DIR" \
+  -t "$TARGET_PANE" -d "$START_DIR" -s 'bg=#011423,fg=#CBE0F0' \
   "$0" "$TARGET_PANE" --popup

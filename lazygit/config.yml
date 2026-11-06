@@ -1,3 +1,34 @@
+gui:
+  colorScheme: dark
+  theme:
+    activeBorderColor:
+      - "#0FC5ED"
+      - bold
+    inactiveBorderColor:
+      - "#214969"
+    searchingActiveBorderColor:
+      - "#24EAF7"
+      - bold
+    optionsTextColor:
+      - "#0FC5ED"
+    selectedLineFgColor:
+      - bold
+    selectedLineBgColor:
+      - "#15334B"
+    inactiveViewSelectedLineBgColor:
+      - "#0D263B"
+    cherryPickedCommitFgColor:
+      - "#CBE0F0"
+    cherryPickedCommitBgColor:
+      - "#214969"
+    markedBaseCommitFgColor:
+      - "#011423"
+    markedBaseCommitBgColor:
+      - "#24EAF7"
+    unstagedChangesColor:
+      - "#0FC5ED"
+    defaultFgColor:
+      - "#CBE0F0"
 quitOnTopLevelReturn: true
 customCommands:
   - key: "X"

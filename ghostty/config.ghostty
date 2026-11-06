@@ -14,7 +14,7 @@ macos-option-as-alt = true
 
 # Centered Quick Terminal remains visible while focus moves to the main window.
 quick-terminal-position = center
-quick-terminal-size = 50%,75%
+quick-terminal-size = 78%,75%
 quick-terminal-autohide = false
 
 # Typography

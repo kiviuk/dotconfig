@@ -10,5 +10,5 @@ SHELL_BIN=$("$TMUX_BIN" show-option -gqv default-shell)
 SHELL_BIN=${SHELL_BIN:-/bin/zsh}
 
 "$TMUX_BIN" display-popup -E -B -w 75% -h 50% -t "$TARGET_PANE" -d "$START_DIR" \
-  -s "bg=#07191e,fg=#b8c5c8" \
+  -s "bg=#011423,fg=#CBE0F0" \
   "$SHELL_BIN" -l
