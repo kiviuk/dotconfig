@@ -46,7 +46,9 @@ pi extension: /Users/mobe/.pi/agent/npm/node_modules
 /Users/mobe/.github-copilot-cli/cache/models/foundry.modelinfo.json
 /Users/mobe/.ideavimrc
 /Users/mobe/.aerospace.toml
-
+/Users/mobe/Projects/mysql-connector-j
+/Users/mobe/.pi/agent/settings.json:126 lists npm:opensec-pi-subagents@0.20.0.
+/Users/mobe/Projects/pi/packages/coding-agent/src/modes/interactive/interactive-mode.ts:489,2348.
 
 https://asciidiagrams.github.io/
 

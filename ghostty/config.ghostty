@@ -12,6 +12,11 @@ background-opacity-cells = true
 background-blur = true
 macos-option-as-alt = true
 
+# Centered Quick Terminal remains visible while focus moves to the main window.
+quick-terminal-position = center
+quick-terminal-size = 50%,75%
+quick-terminal-autohide = false
+
 # Typography
 font-family = MesloLGS Nerd Font Mono
 font-size = 17
@@ -30,8 +35,10 @@ keybind = super+[=text:\x00[
 # Pass Command+R through for Neovim's force-reload mapping.
 keybind = super+r=unbind
 keybind = super+n=text:\x00c
+# tmux dispatches Command+B/S/E/G to fzf in shells and Snacks in Neovim panes.
 keybind = super+e=text:\x00e
 keybind = super+g=text:\x00g
+keybind = super+b=text:\x00b
 # Command+Shift+G opens the source-line picker in the current tmux pane.
 keybind = super+shift+g=text:\x00G
 # Command+Shift+P toggles Bluetooth off / the Q45 connection via tmux.
@@ -39,6 +46,9 @@ keybind = super+shift+p=text:\x00B
 # Command+Shift+S opens the fuzzy Pi session picker in tmux.
 keybind = super+shift+s=text:\x00P
 keybind = super+l=text:\x00l
+# Command+O toggles Ghostty's non-autohiding Quick Terminal.
+keybind = super+o=toggle_quick_terminal
+keybind = super+z=text:\x00Z
 keybind = super+s=text:\x00S
 keybind = super+a=text:\x00A
 keybind = super+shift+h=text:\x00h

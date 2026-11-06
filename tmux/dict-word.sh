@@ -20,8 +20,12 @@ DICT_FILE="/usr/share/dict/words"
 }
 
 # Run fzf inside a tmux popup; on selection, pipe word to send-keys for target pane
-tmux popup -E -w 60% -h 70% -T ' Dictionary (fzf) ' \
-  "fzf --height=100% --reverse --prompt='Word> ' --border=rounded \
+tmux popup -E -B -w 60% -h 70% -t "$TARGET_PANE" \
+  -s "bg=#07191e,fg=#b8c5c8" \
+  "fzf --height=100% --reverse --prompt='Word> ' --info=inline-right \
+       --highlight-line --pointer='▌' --border=sharp \
+       --border-label='Dictionary' --border-label-pos=0 \
        --color='bg:#07191e,fg:#b8c5c8,fg+:#dce3e3,bg+:#183139,hl:#d5a53d,hl+:#f1bd58,info:#82979b,prompt:#ed8438,pointer:#ed8438,marker:#e4b648,spinner:#82b5b9,header:#e58a3a,border:#205660,preview-border:#205660,preview-bg:#07191e,label:#e58a3a,gutter:#07191e' \
-       --preview='echo {}' --preview-window=up:1:wrap \
+       --preview='echo {}' --preview-window=right,50%,wrap,border-sharp \
+       --preview-label='Preview' --preview-label-pos=0 \
        < '$DICT_FILE' | xargs -r tmux send-keys -t '$TARGET_PANE'"

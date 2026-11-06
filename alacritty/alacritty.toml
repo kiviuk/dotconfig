@@ -42,10 +42,12 @@ bindings = [
   { key = "R", mods = "Command", chars = "\u0000," },
   # Send Ctrl-Space then c to create a tmux window with Command+N.
   { key = "N", mods = "Command", chars = "\u0000c" },
-  # Send Ctrl-Space then e to open tmux's fuzzy file picker with Command+E.
+  # Command+E reaches the tmux file picker; tmux routes Neovim panes to Snacks.
   { key = "E", mods = "Command", chars = "\u0000e" },
-  # Send Ctrl-Space then g to open tmux's fuzzy dictionary picker with Command+G.
+  # Command+G reaches the tmux dictionary picker; tmux routes Neovim panes to Snacks.
   { key = "G", mods = "Command", chars = "\u0000g" },
+  # Command+B opens the tmux branch picker; tmux routes Neovim panes to Snacks.
+  { key = "B", mods = "Command", chars = "\u0000b" },
   # Send Ctrl-Space then G to open the source-line picker with Command+Shift+G.
   { key = "G", mods = "Command|Shift", chars = "\u0000G" },
   # Send Ctrl-Space then B to toggle Bluetooth off / Q45 connection with Command+Shift+P.
@@ -54,7 +56,11 @@ bindings = [
   { key = "S", mods = "Command|Shift", chars = "\u0000P" },
   # Send Ctrl-Space then l to toggle to the last tmux window with Command+L.
   { key = "L", mods = "Command", chars = "\u0000l" },
-  # Send Ctrl-Space then S to open the tmux snippets picker with Command+S.
+  # Send Ctrl-Space then O to open an ephemeral shell popup.
+  { key = "O", mods = "Command", chars = "\u0000O" },
+  # Send Ctrl-Space then Z to open LazyGit in the current pane's working directory.
+  { key = "Z", mods = "Command", chars = "\u0000Z" },
+  # Command+S reaches the tmux snippets picker; tmux routes Neovim panes to Snacks.
   { key = "S", mods = "Command", chars = "\u0000S" },
   # Send Ctrl-Space then A to open the tmux snippets editor with Command+A.
   { key = "A", mods = "Command", chars = "\u0000A" },
