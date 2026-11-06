@@ -32,8 +32,8 @@ gui:
 quitOnTopLevelReturn: true
 customCommands:
   - key: "X"
-    context: "global"
-    description: "Run local AI review"
-    command: "cd \"$(git rev-parse --show-toplevel)\" && zsh -c 'source /Users/mobe/.zalias && review_staged'"
+    context: "files"
+    description: "Run review_local and fill commit form"
+    command: "$HOME/.config/lazygit/review-local-commit-form.sh"
     loadingText: "Running review_local..."
-    output: popup
+    output: log
